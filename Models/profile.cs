@@ -8,7 +8,8 @@ namespace MIS4200Team1.Models
 {
     public class profile
     {
-        public int userId { get; set; }
+        [Key]
+        public System.Guid userId { get; set; }
 
         [Display(Name = "First Name")]
         [Required(ErrorMessage = "First Name is required")]
