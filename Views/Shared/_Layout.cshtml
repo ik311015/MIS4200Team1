@@ -17,14 +17,14 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <img src="https://ww1.prweb.com/prfiles/2019/04/30/16275299/centric_logo_color.jpg" alt="Centric Logo" style="width:;height:50px;">
+                <img src="https://ww1.prweb.com/prfiles/2019/04/30/16275299/centric_logo_color.jpg" alt="Centric Logo" style="width;height:50px;">
             </div>
             <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
+                <ul class="nav navbar-brand">
                     <li>@Html.ActionLink("Home", "Index", "Home", new { Style = "color:Black" })</li>
                     <li>@Html.ActionLink("About", "About", "Home", new { Style = "color:Black" })</li>
                     <li>@Html.ActionLink("Contact", "Contact", "Home", new { Style = "color:Black" })</li>
-                    <li>@Html.ActionLink("Create", "Create", "profiles")</li>
+                    <li>@Html.ActionLink("Employee", "Index", "profiles")</li>
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>
