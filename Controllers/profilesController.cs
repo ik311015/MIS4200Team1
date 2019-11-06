@@ -11,6 +11,7 @@ using MIS4200Team1.Models;
 
 namespace MIS4200Team1.Controllers
 {
+    [Authorize]
     public class profilesController : Controller
     {
         private centricContext db = new centricContext();
