@@ -11,108 +11,109 @@ using MIS4200Team1.Models;
 
 namespace MIS4200Team1.Controllers
 {
-    public class profilesController : Controller
+    public class recognitionsController : Controller
     {
         private centricContext db = new centricContext();
 
-        // GET: profiles
+        // GET: recognitions
         public ActionResult Index()
         {
-            return View(db.Profiles.ToList());
+            return View(db.recognitions.ToList());
         }
 
-        // GET: profiles/Details/5
+        // GET: recognitions/Details/5
         public ActionResult Details(Guid? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            profile profile = db.Profiles.Find(id);
-            if (profile == null)
+            recognition recognition = db.recognitions.Find(id);
+            if (recognition == null)
             {
                 return HttpNotFound();
             }
-            return View(profile);
+            return View(recognition);
         }
 
-        // GET: profiles/Create
+        // GET: recognitions/Create
         public ActionResult Create()
         {
+            ViewBag.Id = new SelectList(db.Profiles, "userId", "fullName");
             return View();
         }
 
-        // POST: profiles/Create
+        // POST: recognitions/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "userId,firstName,lastName,businessUnit,HireDate,title")] profile profile)
+        public ActionResult Create([Bind(Include = "recognitionId,award,recognizer,recognized,recognitionDate,comments,userId")] recognition recognition)
         {
             if (ModelState.IsValid)
             {
-                profile.userId = Guid.NewGuid();
-                db.Profiles.Add(profile);
+                recognition.recognitionId = Guid.NewGuid();
+                db.recognitions.Add(recognition);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(profile);
+            return View(recognition);
         }
 
-        // GET: profiles/Edit/5
+        // GET: recognitions/Edit/5
         public ActionResult Edit(Guid? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            profile profile = db.Profiles.Find(id);
-            if (profile == null)
+            recognition recognition = db.recognitions.Find(id);
+            if (recognition == null)
             {
                 return HttpNotFound();
             }
-            return View(profile);
+            return View(recognition);
         }
 
-        // POST: profiles/Edit/5
+        // POST: recognitions/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "userId,firstName,lastName,businessUnit,HireDate,title")] profile profile)
+        public ActionResult Edit([Bind(Include = "recognitionId,award,recognizer,recognized,recognitionDate,comments,userId")] recognition recognition)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(profile).State = EntityState.Modified;
+                db.Entry(recognition).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(profile);
+            return View(recognition);
         }
 
-        // GET: profiles/Delete/5
+        // GET: recognitions/Delete/5
         public ActionResult Delete(Guid? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            profile profile = db.Profiles.Find(id);
-            if (profile == null)
+            recognition recognition = db.recognitions.Find(id);
+            if (recognition == null)
             {
                 return HttpNotFound();
             }
-            return View(profile);
+            return View(recognition);
         }
 
-        // POST: profiles/Delete/5
+        // POST: recognitions/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(Guid id)
         {
-            profile profile = db.Profiles.Find(id);
-            db.Profiles.Remove(profile);
+            recognition recognition = db.recognitions.Find(id);
+            db.recognitions.Remove(recognition);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
