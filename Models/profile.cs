@@ -35,6 +35,8 @@ namespace MIS4200Team1.Models
         [StringLength(20)]
         public string title { get; set; }
 
+        public string fullName { get { return lastName + ", " + firstName; } }
+
 
     }
 }
