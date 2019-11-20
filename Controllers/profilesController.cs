@@ -15,11 +15,23 @@ namespace MIS4200Team1.Controllers
     {
         private centricContext db = new centricContext();
 
+
         // GET: profiles
-        public ActionResult Index()
-        {
-            return View(db.Profiles.ToList());
-        }
+
+            public ActionResult Index(string searchString)
+            {
+                var testusers = from u in db.Profiles select u;
+                if (!String.IsNullOrEmpty(searchString))
+                {
+                    testusers = testusers.Where(u =>
+                    u.lastName.Contains(searchString)
+                        || u.firstName.Contains(searchString));
+                    // if here, users were found so view them
+                    return View(testusers.ToList());
+                }
+                return View(db.Profiles.ToList());
+            }
+
 
         // GET: profiles/Details/5
         public ActionResult Details(Guid? id)
