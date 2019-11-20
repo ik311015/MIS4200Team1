@@ -4,6 +4,12 @@
     ViewBag.Title = "Index";
 }
 
+    <style>
+        body {
+            background-color: #e6e6e6;
+        }
+    </style>
+
 <h2>Index</h2>
 
 <p>
@@ -32,32 +38,33 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.award)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.recognizer)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.recognized)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.recognitionDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.comments)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.userId)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.recognitionId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.recognitionId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.recognitionId })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.award)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.recognizer)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.recognized)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.recognitionDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.comments)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.userId)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.recognitionId }) |
+                @Html.ActionLink("Details", "Details", new { id = item.recognitionId }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.recognitionId })
+            </td>
+        </tr>
+    }
 
 </table>
