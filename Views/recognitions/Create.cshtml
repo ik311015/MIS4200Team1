@@ -32,7 +32,7 @@
             @Html.DisplayFor(modelItem => modelItem.profile.fullName)
             <div class="col-md-10">
                 @Html.DropDownList("recognized", null, htmlAttributes: new { @class = "form-control" })
-                @Html.EditorFor(model => model.recognizer, new { htmlAttributes = new { @class = "form-control" } })
+                @*@Html.EditorFor(model => model.recognizer, new { htmlAttributes = new { @class = "form-control" } })*@
                 @Html.ValidationMessageFor(model => model.recognizer, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -41,7 +41,7 @@
             @Html.DisplayFor(modelItem => modelItem.profile.fullName)
             <div class="col-md-10">
                 @Html.DropDownList("recognized", null, htmlAttributes: new { @class = "form-control" })
-                @Html.EditorFor(model => model.recognized, new { htmlAttributes = new { @class = "form-control" } })
+                @*@Html.EditorFor(model => model.recognized, new { htmlAttributes = new { @class = "form-control" } })*@
                 @Html.ValidationMessageFor(model => model.recognized, "", new { @class = "text-danger" })
             </div>
         </div>
