@@ -39,7 +39,7 @@ namespace MIS4200Team1.Controllers
         // GET: recognitions/Create
         public ActionResult Create()
         {
-            ViewBag.Id = new SelectList(db.Profiles, "userId", "fullName");
+            ViewBag.recognized = new SelectList(db.Profiles, "userId", "fullName");
             return View();
         }
 
