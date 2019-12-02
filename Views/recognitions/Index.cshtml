@@ -4,13 +4,24 @@
     ViewBag.Title = "Index";
 }
 
-    <style>
-        body {
-            background-color: #e6e6e6;
-        }
-    </style>
+<style>
+    body {
+        background-color: #e6e6e6;
+    }
+</style>
 
 <h2>Index</h2>
+
+@{
+    var total = ViewBag.total;
+    var excellence = ViewBag.Excellence;
+    var culture = ViewBag.Culture;
+    var integrity = ViewBag.Integrity;
+    <h2>Total recognitions received = @total</h2>
+    <h3>Excellence awards = @excellence</h3>
+    <h3>Culture awards = @culture</h3>
+    <h3>Integrity awards = @integrity</h3>
+}
 
 <p>
     @Html.ActionLink("Create New", "Create")

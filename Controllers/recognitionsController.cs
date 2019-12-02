@@ -18,6 +18,26 @@ namespace MIS4200Team1.Controllers
         // GET: recognitions
         public ActionResult Index()
         {
+            //TRYING TO CALCULATE COUNTS W ID
+            //var rec = db.recognitions.Where(r => r.userId == Id);
+            //var recList = rec.ToList();
+            //ViewBag.rec = recList;
+            //ViewBag.rec = recList.ToList();
+
+            //var totalCnt = recList.Count(); //counts all the recognitions for that person
+            //var rec1Cnt = recList.Where(r => r.award == recognition.coreValue.Excellence).Count();
+            //// counts all the Excellence recognitions
+            //// notice how the Enum values are references, class.enum.value
+            //// the next two lines show another way to do the same counting
+            //var rec2Cnt = recList.Count(r => r.award == recognition.coreValue.Culture);
+            //var rec3Cnt = recList.Count(r => r.award == recognition.coreValue.Integrity);
+            //// copy the values into the ViewBag
+            //ViewBag.total = totalCnt;
+            //ViewBag.Excellence = rec1Cnt;
+            //ViewBag.Culture = rec2Cnt;
+            //ViewBag.Integrity = rec3Cnt;
+
+
             return View(db.recognitions.ToList());
         }
 
