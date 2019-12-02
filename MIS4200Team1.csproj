@@ -171,14 +171,17 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\profilesController.cs" />
+    <Compile Include="Controllers\recognitionsController.cs" />
     <Compile Include="DAL\centricContext.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\MISContext\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\profile.cs" />
+    <Compile Include="Models\recognition.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -194,6 +197,7 @@
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
+    <None Include="Properties\PublishProfiles\FolderProfile1.pubxml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -244,6 +248,11 @@
     <Content Include="Views\profiles\Details.cshtml" />
     <Content Include="Views\profiles\Edit.cshtml" />
     <Content Include="Views\profiles\Index.cshtml" />
+    <Content Include="Views\recognitions\Create.cshtml" />
+    <Content Include="Views\recognitions\Delete.cshtml" />
+    <Content Include="Views\recognitions\Details.cshtml" />
+    <Content Include="Views\recognitions\Edit.cshtml" />
+    <Content Include="Views\recognitions\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

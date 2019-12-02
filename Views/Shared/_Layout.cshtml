@@ -8,8 +8,34 @@
     @Scripts.Render("~/bundles/modernizr")
 
 </head>
-<body>
-    <div class="navbar navbar-inverse navbar-fixed-top" style="background-color:#F0B734">
+
+<style>
+    .navbar {
+  overflow: hidden;
+  background-color: #f1f1f1;
+}
+
+.navbar a {
+  float: left;
+  display: block;
+  color: black;
+  text-align: center;
+  padding: 1px 1px;
+  text-decoration: none;
+  font-size: 17px;
+  border-bottom: 3px solid transparent;
+}
+
+.navbar a:hover {
+  border-bottom: 3px solid DarkBlue;
+}
+
+.navbar a.active {
+  border-bottom: 3px solid DarkBlue;
+}
+</style>
+
+    <div class="navbar navbar-fixed-top" style="background-color:#ffffff">
         <div class="container-fluid">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -17,15 +43,27 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <img src="https://ww1.prweb.com/prfiles/2019/04/30/16275299/centric_logo_color.jpg" alt="Centric Logo" style="width:;height:50px;">
+                <a href="https://centricconsulting.com/">
+                    <img src="https://ww1.prweb.com/prfiles/2019/04/30/16275299/centric_logo_color.jpg" alt="Centric Logo" style="height:50px;">
+                </a>
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home", new { Style = "color:Black" })</li>
-                    <li>@Html.ActionLink("About", "About", "Home", new { Style = "color:Black" })</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home", new { Style = "color:Black" })</li>
-                    <li>@Html.ActionLink("Create", "Create", "profiles")</li>
+                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                    <li>@Html.ActionLink("About", "About", "Home")</li>
+                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <li>@Html.ActionLink("Employee", "Index", "profiles")</li>
+                        <li>@Html.ActionLink("Recognitions", "create", "recognitions")</li>
+                    }
                 </ul>
+                <a href="https://www.linkedin.com/company/centric-consulting/">
+                    <img src="https://i0.wp.com/nativeadvertisinginstitute.com/wp-content/uploads/2015/03/LinkedIn.png?fit=1024%2C768&ssl=1" alt="LinkedIn" style="height:50px" width="69">
+                </a>
+                <a href="https://twitter.com/centric">
+                    <img src="https://pbs.twimg.com/profile_images/1111729635610382336/_65QFl7B.png" alt="Twitter" style="height:50px" width="52">
+                </a>
                 @Html.Partial("_LoginPartial")
             </div>
         </div>
@@ -34,7 +72,7 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - Centric Consulting | Ohio University</p>
+            <p>&copy; @DateTime.Now.Year - Centric Consulting | Ohio University 2019</p>
         </footer>
     </div>
 
