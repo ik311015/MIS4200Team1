@@ -17,7 +17,7 @@ namespace MIS4200Team1.DAL
         // Include each object here. The value inside <> is the name of the class,
         // the value outside should generally be the plural of the class name
         // and is the name used to reference the entity in code
-        public DbSet<profile> Profiles { get; set; }
+        public DbSet<Profile> Profiles { get; set; }
 
         public System.Data.Entity.DbSet<MIS4200Team1.Models.recognition> recognitions { get; set; }
     }

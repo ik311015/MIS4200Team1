@@ -170,7 +170,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
-    <Compile Include="Controllers\profilesController.cs" />
+    <Compile Include="Controllers\ProfilesController.cs" />
     <Compile Include="Controllers\recognitionsController.cs" />
     <Compile Include="DAL\centricContext.cs" />
     <Compile Include="Global.asax.cs">
@@ -243,11 +243,11 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\profiles\Create.cshtml" />
-    <Content Include="Views\profiles\Delete.cshtml" />
-    <Content Include="Views\profiles\Details.cshtml" />
-    <Content Include="Views\profiles\Edit.cshtml" />
-    <Content Include="Views\profiles\Index.cshtml" />
+    <Content Include="Views\Profiles\Create.cshtml" />
+    <Content Include="Views\Profiles\Delete.cshtml" />
+    <Content Include="Views\Profiles\Details.cshtml" />
+    <Content Include="Views\Profiles\Edit.cshtml" />
+    <Content Include="Views\Profiles\Index.cshtml" />
     <Content Include="Views\recognitions\Create.cshtml" />
     <Content Include="Views\recognitions\Delete.cshtml" />
     <Content Include="Views\recognitions\Details.cshtml" />

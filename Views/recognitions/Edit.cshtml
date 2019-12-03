@@ -4,12 +4,6 @@
     ViewBag.Title = "Edit";
 }
 
-    <style>
-        body {
-            background-color: #e6e6e6;
-        }
-    </style>
-
 <h2>Edit</h2>
 
 
@@ -21,53 +15,29 @@
         <h4>recognition</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        @Html.HiddenFor(model => model.recognitionId)
+        @Html.HiddenFor(model => model.recognitionID)
 
         <div class="form-group">
-            @Html.LabelFor(model => model.award, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.description, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EnumDropDownListFor(model => model.award, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.award, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.description, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.description, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.recognizer, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.values, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.recognizer, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.recognizer, "", new { @class = "text-danger" })
+                @Html.EnumDropDownListFor(model => model.values, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.values, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.recognized, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.id, "id", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.recognized, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.recognized, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.recognitionDate, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.recognitionDate, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.recognitionDate, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.comments, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.comments, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.comments, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.userId, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.userId, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.userId, "", new { @class = "text-danger" })
+                @Html.DropDownList("id", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.id, "", new { @class = "text-danger" })
             </div>
         </div>
 
