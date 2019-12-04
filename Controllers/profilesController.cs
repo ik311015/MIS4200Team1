@@ -11,36 +11,24 @@ using MIS4200Team1.Models;
 
 namespace MIS4200Team1.Controllers
 {
-    public class profilesController : Controller
+    public class ProfilesController : Controller
     {
         private centricContext db = new centricContext();
 
+        // GET: Profiles
+        public ActionResult Index()
+        {
+            return View(db.Profiles.ToList());
+        }
 
-        // GET: profiles
-
-            public ActionResult Index(string searchString)
-            {
-                var testusers = from u in db.Profiles select u;
-                if (!String.IsNullOrEmpty(searchString))
-                {
-                    testusers = testusers.Where(u =>
-                    u.lastName.Contains(searchString)
-                        || u.firstName.Contains(searchString));
-                    // if here, users were found so view them
-                    return View(testusers.ToList());
-                }
-                return View(db.Profiles.ToList());
-            }
-
-
-        // GET: profiles/Details/5
+        // GET: Profiles/Details/5
         public ActionResult Details(Guid? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            profile profile = db.Profiles.Find(id);
+            Profile profile = db.Profiles.Find(id);
             if (profile == null)
             {
                 return HttpNotFound();
@@ -48,22 +36,22 @@ namespace MIS4200Team1.Controllers
             return View(profile);
         }
 
-        // GET: profiles/Create
+        // GET: Profiles/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: profiles/Create
+        // POST: Profiles/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "userId,firstName,lastName,businessUnit,HireDate,title")] profile profile)
+        public ActionResult Create([Bind(Include = "ID,firstName,lastName,businessUnit,hireDate,Title,phone,email")] Profile profile)
         {
             if (ModelState.IsValid)
             {
-                profile.userId = Guid.NewGuid();
+                profile.ID = Guid.NewGuid();
                 db.Profiles.Add(profile);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -72,14 +60,14 @@ namespace MIS4200Team1.Controllers
             return View(profile);
         }
 
-        // GET: profiles/Edit/5
+        // GET: Profiles/Edit/5
         public ActionResult Edit(Guid? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            profile profile = db.Profiles.Find(id);
+            Profile profile = db.Profiles.Find(id);
             if (profile == null)
             {
                 return HttpNotFound();
@@ -87,12 +75,12 @@ namespace MIS4200Team1.Controllers
             return View(profile);
         }
 
-        // POST: profiles/Edit/5
+        // POST: Profiles/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "userId,firstName,lastName,businessUnit,HireDate,title")] profile profile)
+        public ActionResult Edit([Bind(Include = "ID,firstName,lastName,businessUnit,hireDate,Title,phone,email")] Profile profile)
         {
             if (ModelState.IsValid)
             {
@@ -103,14 +91,14 @@ namespace MIS4200Team1.Controllers
             return View(profile);
         }
 
-        // GET: profiles/Delete/5
+        // GET: Profiles/Delete/5
         public ActionResult Delete(Guid? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            profile profile = db.Profiles.Find(id);
+            Profile profile = db.Profiles.Find(id);
             if (profile == null)
             {
                 return HttpNotFound();
@@ -118,12 +106,12 @@ namespace MIS4200Team1.Controllers
             return View(profile);
         }
 
-        // POST: profiles/Delete/5
+        // POST: Profiles/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(Guid id)
         {
-            profile profile = db.Profiles.Find(id);
+            Profile profile = db.Profiles.Find(id);
             db.Profiles.Remove(profile);
             db.SaveChanges();
             return RedirectToAction("Index");

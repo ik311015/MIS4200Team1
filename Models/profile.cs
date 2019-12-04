@@ -7,37 +7,57 @@ using System.Web;
 namespace MIS4200Team1.Models
 {
 
-    public class profile
+    public class Profile
     {
         [Key]
-        public System.Guid userId { get; set; }
-
-        [Display(Name = "First Name")]
-        [Required(ErrorMessage = "First Name is required")]
-        [StringLength(20)]
+        public Guid ID { get; set; }
         public string firstName { get; set; }
-
-        [Display(Name = "Last Name")]
-        [Required(ErrorMessage = "Last Name is required")]
-        [StringLength(20)]
         public string lastName { get; set; }
+        public bUnit businessUnit { get; set; }
+        public string hireDate { get; set; }
+        public title Title { get; set; }
+        public string phone { get; set; }
+        public string email { get; set; }
 
-        [Display(Name = "Business Unit")]
-        [Required(ErrorMessage = "Enter your business unit")]
-        [StringLength(20)]
-        public string businessUnit { get; set; }
+        public enum bUnit
+        {
+            Boston,
+            Charlotte,
+            Chicago,
+            Cincinnati,
+            Cleveland,
+            Columbus,
+            India,
+            Indianapolis,
+            Louisville,
+            Miami,
+            Seattle,
+            [Display(Name = "St. Louis")]
+            StLouis,
+            Tampa
+        }
 
-        [Display(Name = "Hire Date")]
-        [Required(ErrorMessage = "Hire Date required")]
-        public System.DateTime HireDate { get; set; }
+        public enum title
+        {
+            Consultant,
+            [Display(Name = "Senior Consultant")]
+            SeniorConsultant,
+            Manager,
+            Architect,
+            [Display(Name = "Senior Manager/Senior Architect")]
+            SeniorManager,
+            Director,
+            VP
+        }
+        ICollection<recognition> Recognition { get; set; }
 
-        [Display(Name = "Title")]
-        [Required(ErrorMessage = "Enter your title")]
-        [StringLength(20)]
-        public string title { get; set; }
-
-        public string fullName { get { return lastName + ", " + firstName; } }
-
+        public string fullName
+        {
+            get
+            {
+                return lastName + ", " + firstName;
+            }
+        }
 
     }
 }

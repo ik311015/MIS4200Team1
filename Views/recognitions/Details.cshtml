@@ -4,12 +4,6 @@
     ViewBag.Title = "Details";
 }
 
-    <style>
-        body {
-            background-color: #e6e6e6;
-        }
-    </style>
-
 <h2>Details</h2>
 
 <div>
@@ -17,56 +11,32 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.award)
+            @Html.DisplayNameFor(model => model.Profile.firstName)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.award)
+            @Html.DisplayFor(model => model.Profile.firstName)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.recognizer)
+            @Html.DisplayNameFor(model => model.description)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.recognizer)
+            @Html.DisplayFor(model => model.description)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.recognized)
+            @Html.DisplayNameFor(model => model.values)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.recognized)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.recognitionDate)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.recognitionDate)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.comments)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.comments)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.userId)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.userId)
+            @Html.DisplayFor(model => model.values)
         </dd>
 
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.recognitionId }) |
+    @Html.ActionLink("Edit", "Edit", new { id = Model.recognitionID }) |
     @Html.ActionLink("Back to List", "Index")
 </p>

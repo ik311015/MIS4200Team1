@@ -18,31 +18,12 @@ namespace MIS4200Team1.Controllers
         // GET: recognitions
         public ActionResult Index()
         {
-            //TRYING TO CALCULATE COUNTS W ID
-            //var rec = db.recognitions.Where(r => r.userId == Id);
-            //var recList = rec.ToList();
-            //ViewBag.rec = recList;
-            //ViewBag.rec = recList.ToList();
-
-            //var totalCnt = recList.Count(); //counts all the recognitions for that person
-            //var rec1Cnt = recList.Where(r => r.award == recognition.coreValue.Excellence).Count();
-            //// counts all the Excellence recognitions
-            //// notice how the Enum values are references, class.enum.value
-            //// the next two lines show another way to do the same counting
-            //var rec2Cnt = recList.Count(r => r.award == recognition.coreValue.Culture);
-            //var rec3Cnt = recList.Count(r => r.award == recognition.coreValue.Integrity);
-            //// copy the values into the ViewBag
-            //ViewBag.total = totalCnt;
-            //ViewBag.Excellence = rec1Cnt;
-            //ViewBag.Culture = rec2Cnt;
-            //ViewBag.Integrity = rec3Cnt;
-
-
-            return View(db.recognitions.ToList());
+            var recognitions = db.recognitions.Include(r => r.Profile);
+            return View(recognitions.ToList());
         }
 
         // GET: recognitions/Details/5
-        public ActionResult Details(Guid? id)
+        public ActionResult Details(int? id)
         {
             if (id == null)
             {
@@ -59,7 +40,7 @@ namespace MIS4200Team1.Controllers
         // GET: recognitions/Create
         public ActionResult Create()
         {
-            ViewBag.recognized = new SelectList(db.Profiles, "userId", "fullName");
+            ViewBag.id = new SelectList(db.Profiles, "ID", "firstName");
             return View();
         }
 
@@ -68,21 +49,21 @@ namespace MIS4200Team1.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "recognitionId,award,recognizer,recognized,recognitionDate,comments,userId")] recognition recognition)
+        public ActionResult Create([Bind(Include = "recognitionID,description,values,id")] recognition recognition)
         {
             if (ModelState.IsValid)
             {
-                recognition.recognitionId = Guid.NewGuid();
                 db.recognitions.Add(recognition);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
+            ViewBag.id = new SelectList(db.Profiles, "ID", "firstName", recognition.id);
             return View(recognition);
         }
 
         // GET: recognitions/Edit/5
-        public ActionResult Edit(Guid? id)
+        public ActionResult Edit(int? id)
         {
             if (id == null)
             {
@@ -93,6 +74,7 @@ namespace MIS4200Team1.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.id = new SelectList(db.Profiles, "ID", "firstName", recognition.id);
             return View(recognition);
         }
 
@@ -101,7 +83,7 @@ namespace MIS4200Team1.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "recognitionId,award,recognizer,recognized,recognitionDate,comments,userId")] recognition recognition)
+        public ActionResult Edit([Bind(Include = "recognitionID,description,values,id")] recognition recognition)
         {
             if (ModelState.IsValid)
             {
@@ -109,11 +91,12 @@ namespace MIS4200Team1.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+            ViewBag.id = new SelectList(db.Profiles, "ID", "firstName", recognition.id);
             return View(recognition);
         }
 
         // GET: recognitions/Delete/5
-        public ActionResult Delete(Guid? id)
+        public ActionResult Delete(int? id)
         {
             if (id == null)
             {
@@ -130,7 +113,7 @@ namespace MIS4200Team1.Controllers
         // POST: recognitions/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(Guid id)
+        public ActionResult DeleteConfirmed(int id)
         {
             recognition recognition = db.recognitions.Find(id);
             db.recognitions.Remove(recognition);
