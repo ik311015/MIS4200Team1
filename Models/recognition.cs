@@ -21,7 +21,8 @@ namespace MIS4200Team1.Models
             Innovative = 4,
             Balance = 5,
             Passion = 6,
-            Culture = 7
+            Culture = 7,
+            Test = 8
         }
 
 
