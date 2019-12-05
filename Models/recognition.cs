@@ -11,7 +11,12 @@ namespace MIS4200Team1.Models
         [Key]
         public int recognitionID { get; set; }
 
+        [Display(Name = "Description")]
+        [Required(ErrorMessage = "*Required")]
+        [StringLength(100)]
         public string description { get; set; }
+
+        [Display(Name = "Values")]
 
         public Values values { get; set; }
 
