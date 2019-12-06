@@ -36,13 +36,13 @@ namespace MIS4200Team1.Controllers
         {
             Guid profileID;  // create a variable to hold the GUID
             Guid.TryParse(User.Identity.GetUserId(), out profileID);
-            Profile profile = db.Profiles.Find(profileID);
+            var profile = db.Profiles.Find(profileID);
             if (profile == null)
             {
                 return HttpNotFound();
             }
-            var recList = db.recognitions.Where(r => r.id == profileID).ToList();
-            ViewBag.Profile = recList;
+            var recList = db.recognitions.Where(r => r.ID == profileID).ToList();
+            //ViewBag.Profile = recList;
 
             var totalCnt = recList.Count(); //counts all the recognitions for that person
             var rec1Cnt = recList.Where(r => r.values == recognition.Values.DeliveryExcellance).Count();
@@ -82,7 +82,7 @@ namespace MIS4200Team1.Controllers
                 return HttpNotFound();
             }
 
-            var recList = db.recognitions.Where(r => r.id == id).ToList();
+            var recList = db.recognitions.Where(r => r.ID == id).ToList();
             ViewBag.Profile = recList;
 
             var totalCnt = recList.Count(); //counts all the recognitions for that person

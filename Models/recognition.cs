@@ -32,7 +32,7 @@ namespace MIS4200Team1.Models
         }
 
 
-        public Guid id { get; set; }
+        public Guid ID { get; set; }
         public virtual Profile Profile { get; set; }
 
 

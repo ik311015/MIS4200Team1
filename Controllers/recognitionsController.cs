@@ -67,7 +67,7 @@ namespace MIS4200Team1.Controllers
                 MailAddress from = new MailAddress("jg346015@ohio.edu", "SysAdmin");
                 myMessage.From = from;
                 // first, the customer found in the order is used to locate the customer record
-                var profile = db.Profiles.Find(recognition.id);
+                var profile = db.Profiles.Find(recognition.ID);
                 // then extract the email address from the customer record
                 var profileEmail = profile.email;
                 // finally, add the email address to the “To” list
@@ -94,7 +94,7 @@ namespace MIS4200Team1.Controllers
 
             }
 
-            ViewBag.id = new SelectList(db.Profiles, "ID", "firstName", recognition.id);
+            ViewBag.id = new SelectList(db.Profiles, "ID", "firstName", recognition.ID);
             return View(recognition);
         }
 
@@ -110,7 +110,7 @@ namespace MIS4200Team1.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.id = new SelectList(db.Profiles, "ID", "firstName", recognition.id);
+            ViewBag.id = new SelectList(db.Profiles, "ID", "firstName", recognition.ID);
             return View(recognition);
         }
 
@@ -127,7 +127,7 @@ namespace MIS4200Team1.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.id = new SelectList(db.Profiles, "ID", "firstName", recognition.id);
+            ViewBag.id = new SelectList(db.Profiles, "ID", "firstName", recognition.ID);
             return View(recognition);
         }
 
