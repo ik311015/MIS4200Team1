@@ -1,4 +1,5 @@
-﻿@model IEnumerable<MIS4200Team1.Models.recognition>
+﻿
+@model MIS4200Team1.Models.Profile
 
 @{
     ViewBag.Title = "MyProfile";
@@ -6,51 +7,87 @@
 
 <h2>MyProfile</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Profile.firstName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.description)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.values)
-        </th>
-        <th></th>
-    </tr>
+<div>
+    <h4>Profile</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.firstName)
+        </dt>
 
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Profile.firstName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.description)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.values)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.recognitionID }) |
-                @Html.ActionLink("Details", "Details", new { id = item.recognitionID }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.recognitionID })
-            </td>
-        </tr>
+        <dd>
+            @Html.DisplayFor(model => model.firstName)
+        </dd>
 
-        <tr>
-            <td>&nbsp;</td>
-            <td colspan="4">
-                @{
-                    var id = item.ID; ;
-                    //var recognitions = item.recognition;
-                }
-            </td>
-        </tr>
+        <dt>
+            @Html.DisplayNameFor(model => model.lastName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.lastName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.businessUnit)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.businessUnit)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.hireDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.hireDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Title)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.phone)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.phone)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.email)
+        </dd>
+
+    </dl>
+    @{
+        var total = ViewBag.total;
+        var excellence = ViewBag.Excellence;
+        var culture = ViewBag.Culture;
+        var integrity = ViewBag.Integrity;
+        var stewardship = ViewBag.Stewardship;
+        var innovation = ViewBag.Innovation;
+        var greaterGood = ViewBag.GreaterGood;
+        var balance = ViewBag.Balance;
+        <h5><strong>Total recognitions received</strong> = @total</h5>
+        <h5>Excellence awards = @excellence</h5>
+        <h5>Culture awards = @culture</h5>
+        <h5>Integrity awards = @integrity</h5>
+        <h5>Stewardship awards = @stewardship</h5>
+        <h5>Innovation awards = @innovation</h5>
+        <h5>GreaterGood awards = @greaterGood</h5>
+        <h5>Balance awards = @balance</h5>
     }
-
-</table>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
