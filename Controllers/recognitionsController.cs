@@ -64,7 +64,7 @@ namespace MIS4200Team1.Controllers
                 myClient.Credentials = new NetworkCredential("AuthorizedUser", "UserPassword");
                 MailMessage myMessage = new MailMessage();
                 // the syntax here is email address, username (that will appear in the email)
-                MailAddress from = new MailAddress("jg346015@ohio.edu", "SysAdmin");
+                MailAddress from = new MailAddress("ik311015@ohio.edu", "SysAdmin");
                 myMessage.From = from;
                 // first, the customer found in the order is used to locate the customer record
                 var profile = db.Profiles.Find(recognition.ID);
@@ -74,7 +74,7 @@ namespace MIS4200Team1.Controllers
                 myMessage.To.Add(profileEmail);
                 // note: it is possible to add more than one email address to the To list
                 // it is also possible to add CC addresses
-                myMessage.To.Add("jg346015@ohio.edu"); // this should be replaced with model data
+                myMessage.To.Add("ik311015@ohio.edu"); // this should be replaced with model data
                                                        // as shown at the end of this document
                 myMessage.Subject = "Recognition";
                 // the body of the email is hard coded here but could be dynamically created using data
@@ -95,7 +95,7 @@ namespace MIS4200Team1.Controllers
             }
 
             ViewBag.id = new SelectList(db.Profiles, "ID", "firstName", recognition.ID);
-            return View(recognition);
+            return RedirectToAction("Index");
         }
 
         // GET: recognitions/Edit/5
