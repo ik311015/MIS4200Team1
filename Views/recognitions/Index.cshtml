@@ -4,7 +4,8 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>Employee Recognitions</h2>
+<h4>Congrats to the following employees for upholding the core values of Centric!</h4>
 
 <style>
     body {
@@ -43,13 +44,7 @@ tr:nth-child(even) {background-color: #f2f2f2}
 <p>
     <a class="btn btn-default" style="background-color:#F0B734" @Html.ActionLink("Create New", "Create")</a>
 </p>
-@using (Html.BeginForm("Index", "Profile.firstName", FormMethod.Get))
-{
-    <p>
-        Find by name: @Html.TextBox("searchString")
-        <input type="submit" value="Search" />
-    </p>
-}
+
 
 <table class="table table-hover">
     <tr>
@@ -67,6 +62,29 @@ tr:nth-child(even) {background-color: #f2f2f2}
         </th>
     </tr>
 
+<<<<<<< HEAD
+@foreach (var item in Model) {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.Profile.firstName)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Profile.lastName)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.description)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.values)
+    </td>
+    <td>
+        @*@Html.ActionLink("Edit", "Edit", new { id=item.recognitionID }) |*@
+        @Html.ActionLink("Details", "Details", new { id = item.recognitionID })
+        @*@Html.ActionLink("Delete", "Delete", new { id=item.recognitionID })*@
+    </td>
+</tr>
+}
+=======
     @foreach (var item in Model)
     {
         <tr>
@@ -86,5 +104,6 @@ tr:nth-child(even) {background-color: #f2f2f2}
             </td>
         </tr>
     }
+>>>>>>> 95e089e4a8250c00263ab11c5b82ea55e34b629f
 
 </table>
