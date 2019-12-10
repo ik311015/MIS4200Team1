@@ -62,7 +62,7 @@ tr:nth-child(even) {background-color: #f2f2f2}
         </th>
     </tr>
 
-<<<<<<< HEAD
+
 @foreach (var item in Model) {
 <tr>
     <td>
@@ -84,8 +84,8 @@ tr:nth-child(even) {background-color: #f2f2f2}
     </td>
 </tr>
 }
-=======
-    @foreach (var item in Model)
+
+    @*@foreach (var item in Model)
     {
         <tr>
             <td>
@@ -98,12 +98,12 @@ tr:nth-child(even) {background-color: #f2f2f2}
                 @Html.DisplayFor(modelItem => item.values)
             </td>
             <td>
-                @*@Html.ActionLink("Edit", "Edit", new { id=item.recognitionID }) |*@
+                @Html.ActionLink("Edit", "Edit", new { id=item.recognitionID }) |
                 @Html.ActionLink("Details", "Details", new { id = item.recognitionID })
-                @*@Html.ActionLink("Delete", "Delete", new { id=item.recognitionID })*@
+                @Html.ActionLink("Delete", "Delete", new { id=item.recognitionID })
             </td>
         </tr>
-    }
->>>>>>> 95e089e4a8250c00263ab11c5b82ea55e34b629f
+    }*@
+
 
 </table>
